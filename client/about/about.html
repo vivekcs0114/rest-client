@@ -1,0 +1,22 @@
+<div ng-controller="aboutCtrl">
+   <div ng-include="'client/header/header.html'"></div>
+   <div class="container-fluid">
+      <h3>HTTP Status Codes</h3>
+      <table class="table table-hover">
+         <thead>
+            <tr>
+               <th>Status Code</th>
+               <th>Meaning</th>
+               <th>Description</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="httpCode in httpCodes">
+               <td>{{httpCode.statusCode}}</td>
+               <td>{{httpCode.statusMeaning}}</td>
+               <td>{{httpCode.statusDescription}}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>

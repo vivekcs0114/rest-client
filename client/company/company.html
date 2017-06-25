@@ -1,0 +1,48 @@
+<div ng-controller="companyCtrl">
+   <div class="row">
+      <div class="col-lg-3">
+         <div ng-include="'client/dashboard/dbleftbar.html'"></div>
+      </div>
+      <div class="col-lg-9">
+         <div ng-include="'client/dashboard/dbtopbar.html'"></div>
+   <div>
+      <button class="btn btn-primary" ng-show="editBtnStatus" title="update employee" ng-click="updateDetail()"><span class="glyphicon glyphicon-edit"></span></button>
+      <h2 ng-show="updateBtnStatus"><b>Update your record</b></h2>
+      <form name="addCompanyForm">
+         <div class="form-group" ng-show="companyIdStatus">
+            <label>
+               <h3>company Id</h3>
+            </label>
+            <input class="form-control" type="text" name="companyId" ng-model="companyId" ng-init="companyId='{{company.companyId}}'" value="{{company.companyId}}" ng-disabled="inputStatus">
+         </div>
+         <div class="form-group">
+            <label>
+               <h3>company Name</h3>
+            </label>
+            <input class="form-control" type="text" name="companyName" ng-model="companyName" ng-init="companyName='{{company.companyName}}'" value="{{company.companyName}}" ng-disabled="inputStatus" ng-required="true">
+            <span ng-show="addCompanyForm.companyName.$invalid">*project title  is required.</span>
+         </div>
+         <div class="form-group">
+            <label>
+               <h3>Contact Details</h3>
+            </label>
+            <input class="form-control" type="text" name="companyContactNumber" ng-model="companyContactNumber" ng-init="companyContactNumber='{{company.companyContactNumber}}'" value="{{company.companyContactNumber}}" ng-disabled="inputStatus" ng-required="true">
+            <span ng-show="addCompanyForm.companyContactNumber.$invalid">*project title  is required.</span>
+         </div>
+         <div class="form-group">
+            <label>
+               <h3>Address</h3>
+            </label>
+            <input class="form-control" type="text" name="companyAddress" ng-model="companyAddress" ng-init="companyAddress='{{company.companyAddress}}'" value="{{company.companyAddress}}" ng-disabled="inputStatus">
+            <span ng-show="addCompanyForm.companyAddress.$invalid" ng-required="true">*project title  is required.</span>
+         </div>
+         <button type="submit" class="btn btn-primary" ng-show="updateBtnStatus" ng-click="update(company.companyId)">Update</button>
+         <button class="btn btn-primary" ng-show="updateBtnStatus" ng-click="cancel()">Cancel</button>
+      </form>
+   </div>
+</div>
+</div>
+</div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,18 @@
+<div ng-controller="dashboardCtrl">
+         <ul class="nav nav-tabs navbar-inverse nav-stacked"">
+            <li>
+            <div class="container">
+               <img src="../../resource/jersey.jpg" class="img-thumbnail" alt="Cinque Terre" width="80" height="70"> 
+               <p>{{userName}}</p>
+            </div>
+            </li>
+            <li><a href="/profile">Profile</a></li>
+            <li ng-if="admin"><a href="/project">Project</a></li>
+            <li ng-if="admin"><a href="/employee">Employee</a></li>
+            <li ng-if="admin"><a href="/assign">Assign Task</a></li>
+            <li ng-if="employee"><a href="/projects">Projects</a></li>
+            <li ng-if="employee"><a href="/task">My Project</a></li>
+            <li ng-if="employee"><a href="/notification">Notification</a></li>
+            <li ng-if="employee"><a href="/team">Team Members</a></li>
+         </ul>
+</div>

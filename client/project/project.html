@@ -1,0 +1,98 @@
+<style>
+   #details input {
+   border: none;
+   }
+</style>
+<div ng-controller="projectCtrl">
+   <div class="row">
+      <div class="col-lg-3">
+         <div ng-include="'client/dashboard/dbleftbar.html'"></div>
+      </div>
+      <div class="col-lg-9">
+   <br>
+   <div>
+      <button class="btn btn-info" ng-click="addRecord()" type="button">Add project</button>
+   </div>
+   <br>
+   <div class="input-group">
+      <input type="text" class="form-control" ng-model="content" placeholder="search">
+      <span class="input-group-btn">
+      <button class="btn btn-info" ng-click="search(content)" type="button">Search</button>
+      </span>
+   </div>
+   <br>
+   <div>
+      <table class="table table-striped table-inverse">
+         <thead>
+            <tr bgcolor="sky-blue">
+               <th>Project Description</th>
+               <th>Project Feature</th>
+               <th>Project Title</th>
+               <th>Technology Used</th>
+               <th></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="project in projects">
+               <td>{{project.projectDescription}}</td>
+               <td>{{project.projectFeature}}</td>
+               <td>{{project.projectTitle}}</td>
+               <td>{{project.technologyUsed}}</td>
+               <td align="right"><button class="btn btn-primary" title="show project" ng-click="showDetail(project.projectId)"><span class="glyphicon glyphicon-eye-open"></span></button>
+                  <button class="btn btn-primary" title="update project" ng-click="updateDetail(project.projectId)"><span class="glyphicon glyphicon-edit"></span></button>
+                  <button class="btn btn-primary" title="delete project" ng-click="delete(project.projectId)"><span class="glyphicon glyphicon-trash"></span></button>
+               </td>
+            </tr>
+         </tbody>
+         <tfoot>
+            <tr bgcolor="#626c7c">
+               <td colspan="2"><button class="btn btn-info" ng-disabled="preBtnStatus" ng-click="getPreviousProject()">Previous</button></td>
+               <td colspan="2" bgcolor="white" align="center"><b>[{{begin}}-{{end}}] of {{total}}</b></td>
+               <td colspan="2" align="right"><button class="btn btn-info" ng-disabled="nextBtnStatus" ng-click="getNextProject()">Next</button></td>
+            </tr>
+         </tfoot>
+      </table>
+      <div id="details" ng-show="detailsDivStatus">
+         <hr style="border-width: 3px;border-style: inset;">
+         <h2 ng-show="saveBtnStatus"><b>Add new record </b></h2>
+         <h2 ng-show="updateBtnStatus"><b>Update your record</b></h2>
+         <h2 ng-show="!saveBtnStatus && !updateBtnStatus"><b>Project Details</b></h2>
+         <form name="addprojecform">
+            <div class="form-group">
+               <label>
+                  <h3>Project Title</h3>
+               </label>
+               <input class="form-control" type="text" name="projectTitle" ng-model="projectTitle" ng-init="projectTitle='{{project.projectTitle}}'" value="{{project.projectTitle}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addprojecform.projectTitle.$touched && addprojecform.projectTitle.$invalid">*project title  is required.</span>
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Project Feature</h3>
+               </label>
+               <input class="form-control" type="text" name="projectFeature" ng-model="projectFeature" ng-init="projectFeature='{{project.projectFeature}}'" value="{{project.projectFeature}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addprojecform.projectFeature.$touched && addprojecform.projectFeature.$invalid">*project Feature  is required.</span>
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Technology Used</h3>
+               </label>
+               <input class="form-control" type="text" name="technologyUsed"  ng-model="technologyUsed" ng-init="technologyUsed='{{project.technologyUsed}}'" value="{{project.technologyUsed}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addprojecform.technologyUsed.$touched && addprojecform.technologyUsed.$invalid">*TechnologyUsed  is required.</span>
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Project Description</h3>
+               </label>
+               <input class="form-control" type="text" name="projectDescription"  ng-model="projectDescription" ng-init="projectDescription='{{project.projectDescription}}'" value="{{project.projectDescription}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addprojecform.projectDescription.$touched && addprojecform.projectDescription.$invalid"">*Project Description  is required.</span>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-show="saveBtnStatus" ng-click="save()">Save</button>
+            <button type="submit" class="btn btn-primary" ng-show="updateBtnStatus" ng-click="update(project.projectId)">Update</button>
+            <button class="btn btn-primary" ng-show="saveBtnStatus || updateBtnStatus" ng-click="cancel()">Cancel</button>
+         </form>
+      </div>
+   </div>
+</div>
+      </div>
+   </div>
+</div>

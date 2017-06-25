@@ -1,0 +1,77 @@
+<div ng-controller="profileCtrl">
+   <div class="row">
+      <div class="col-lg-3">
+         <div ng-include="'client/dashboard/dbleftbar.html'"  ng-init="getProfile()"></div>
+      </div>
+      <div class="col-lg-9">
+         <div ng-include="'client/dashboard/dbtopbar.html'"></div>
+         <div id="user" class="tab-pane fade in active">
+         <h3>Profile</h3>
+         <button class="btn btn-primary" title="update employee" ng-click="updateDetail()"><span class="glyphicon glyphicon-edit"></span></button>
+         <form name="addEmployeeForm">
+            <div class="form-group">
+               <label>
+                  <h3>First Name*</h3>
+               </label>
+               <input class="form-control" type="text" name="firstName" ng-model="firstName" ng-init="firstName='{{employee.firstName}}'" value="{{employee.firstName}}" ng-disabled="inputStatus" ng-required="true">
+                <span ng-show="addEmployeeForm.firstName.$touched && addEmployeeForm.firstName.$invalid">*firstName  is required.</span>
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Last Name*</h3>
+               </label>
+               <input class="form-control" type="text" name="lastName" ng-model="lastName" ng-init="lastName='{{employee.lastName}}'" value="{{employee.lastName}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addEmployeeForm.lastName.$touched && addEmployeeForm.lastName.$invalid">*lastName  is required.</span>
+            </div>
+            <div class="form-group" ng-show="saveBtnStatus">
+               <label>
+                  <h3>Email*</h3>
+               </label>
+               <input class="form-control" type="email" name="email" ng-model="email" ng-init="email='{{employee.email}}'" value="{{employee.email}}" ng-disabled="inputStatus">
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Mobile</h3>
+               </label>
+               <input class="form-control" type="text" name="mobile" ng-model="mobile" ng-init="mobile='{{employee.mobile}}'" value="{{employee.mobile}}" ng-disabled="inputStatus">
+            </div>
+            <div class="form-group">
+               <label>
+                  <h3>Type*</h3>
+               </label>
+               <input class="form-control" type="text" name="type" ng-model="type" ng-init="type='{{employee.type}}'" value="{{employee.type}}" ng-disabled="inputStatus" ng-required="true">
+               <span ng-show="addEmployeeForm.type.$touched && addEmployeeForm.type.$invalid">*type  is required.</span>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-show="updateBtnStatus" ng-click="update(employee.id)">Update</button>
+            <button class="btn btn-primary" ng-show="updateBtnStatus" ng-click="cancel()">Cancel</button>
+         </form>
+      </div>
+      <div id="account" class="tab-pane fade">
+         <h4>Change password</h4>
+         <form name="changePassForm">
+            
+                 <div class="form-group">
+                     <td>Old password</td>
+                  <input type="password" class="form-control" name="oldPassword" name="oldPassword" ng-model="oldPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.oldPassword.$touched && changePassForm.oldPassword.$invalid">*old password  is required.</span>
+                 </div>
+               
+                  <div class="form-group">
+                     New password</td>
+                  <td><input type="password" class="form-control" name="newPassword" name="oldPassword" ng-model="newPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.newPassword.$touched && changePassForm.newPassword.$invalid">*new password  is required.</span>
+                  </div>
+              
+                  <div class="form-group">
+                    Confirm password
+                  <input type="password" class="form-control" name="cnfrmPassword" name="oldPassword" ng-model="cnfrmPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.cnfrmPassword.$touched && changePassForm.cnfrmPassword.$invalid">*confirm password  is required.</span>
+                  </div>
+               <div class="form-group">
+                   <button  class="form-control" ng-disabled="changePassForm.$invalid" ng-click="changePassword()">Update password</button>
+               </div>
+         </form>
+      </div>
+      </div>
+   </div>
+</div>

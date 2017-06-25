@@ -1,0 +1,37 @@
+<div ng-controller="accountCtrl">
+   <div class="row">
+      <div class="col-lg-3">
+         <div ng-include="'client/dashboard/dbleftbar.html'"></div>
+      </div>
+      <div class="col-lg-9">
+         <div ng-include="'client/dashboard/dbtopbar.html'"></div>
+         
+         <h4>Change password</h4>
+         <form name="changePassForm">
+            
+                 <div class="form-group">
+                     <td>Old password</td>
+                  <input type="password" class="form-control" name="oldPassword" name="oldPassword" ng-model="oldPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.oldPassword.$touched && changePassForm.oldPassword.$invalid">*old password  is required.</span>
+                 </div>
+               
+                  <div class="form-group">
+                     New password</td>
+                  <td><input type="password" class="form-control" name="newPassword" name="oldPassword" ng-model="newPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.newPassword.$touched && changePassForm.newPassword.$invalid">*new password  is required.</span>
+                  </div>
+              
+                  <div class="form-group">
+                    Confirm password
+                  <input type="password" class="form-control" name="cnfrmPassword" name="oldPassword" ng-model="cnfrmPassword" ng-required="true" ng-required="true">
+                  <span ng-show="changePassForm.cnfrmPassword.$touched && changePassForm.cnfrmPassword.$invalid">*confirm password  is required.</span>
+                  </div>
+               <div class="form-group">
+                   <button  class="form-control" ng-disabled="changePassForm.$invalid" ng-click="changePassword()">Update password</button>
+               </div>
+         </form>
+</div>
+      </div>
+   </div>
+</div>
+
